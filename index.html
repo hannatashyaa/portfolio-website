@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanna Tashya Portuna - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 20px 50px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .about-me-btn {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .about-me-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            padding: 120px 50px 50px;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #a8b3ff;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero h2::before {
+            content: "";
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button::after {
+            content: "→";
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(5px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 400px;
+            height: 500px;
+        }
+
+        .profile-card {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(30px);
+            border-radius: 200px 200px 50px 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 85%;
+            border-radius: 200px 200px 30px 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .profile-name {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #1a1a2e;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .profile-decoration {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            transform: rotate(-15deg);
+        }
+
+        .projects-section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .projects-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .projects-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #e0e7ff;
+            line-height: 1.3;
+        }
+
+        .project-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        .project-link::after {
+            content: "→";
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* About Me Section - CV Style */
+        .about-section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(240, 240, 240, 0.05);
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+        }
+
+        .about-header {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 60px;
+            margin-bottom: 60px;
+            align-items: start;
+        }
+
+        .about-intro h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .about-intro .highlight-name {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-intro p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .about-photo {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #4a9b8e 0%, #5cb3a6 100%);
+            border-radius: 60% 40% 70% 30% / 60% 30% 70% 40%;
+            transition: all 0.3s ease;
+        }
+
+        .about-photo:hover {
+            transform: scale(1.02);
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 60% 40% 70% 30% / 60% 30% 70% 40%;
+        }
+
+        .contact-info-about {
+            margin-top: 40px;
+        }
+
+        .contact-info-about h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #e0e7ff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .contact-item-small {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .contact-icon {
+            font-size: 1.1rem;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .education-section h3,
+        .languages-section h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #e0e7ff;
+        }
+
+        .education-item {
+            margin-bottom: 30px;
+        }
+
+        .education-item h4 {
+            color: #e0e7ff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .degree {
+            color: #a8b3ff;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .specialization {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .duration {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 25px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .language-name {
+            color: #e0e7ff;
+            font-weight: 600;
+        }
+
+        .language-level {
+            color: #a8b3ff;
+            font-size: 0.9rem;
+            padding: 5px 15px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 15px;
+        }
+
+        .skills-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+        }
+
+        .core-skills h3,
+        .soft-skills h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #e0e7ff;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skills-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .expertise-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .expertise-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tool-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .tool-icon-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .canva-icon { background: linear-gradient(135deg, #00C4CC 0%, #7B68EE 100%); }
+        .figma-icon { background: linear-gradient(135deg, #FF7262 0%, #9D4EDD 100%); }
+        .vscode-icon { background: linear-gradient(135deg, #007ACC 0%, #0078D4 100%); }
+        .gc-icon { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); }
+
+        .tool-info h4 {
+            color: #e0e7ff;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 3px;
+            transition: width 0.6s ease;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .contact-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .method-info h4 {
+            color: #e0e7ff;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .method-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .profile-container {
+                width: 300px;
+                height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .projects-showcase {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .about-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .about-details {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills-overview {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px 25px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 25px 50px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-section,
+            .about-section,
+            .expertise-section,
+            .contact-section {
+                padding: 50px 25px;
+            }
+
+            .profile-container {
+                width: 250px;
+                height: 320px;
+            }
+
+            .about-photo {
+                height: 300px;
+            }
+
+            .projects-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">PORTFOLIO DESIGN</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hanna Tashya Portuna </h1>
+            <h2>Machine Learning Engineer | Data Science | Full-Stack Development | Information System Student</h2>
+            <a href="#projects" class="cta-button">Read more</a>
+        </div>
+        <div class="hero-image">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-decoration">H T</div>
+                    <div class="profile-image">
+                        <img src="image/hanna-profile.jpg" alt="Hanna Tashya Portuna" onerror="this.parentElement.innerHTML='<div class=\'profile-image-placeholder\'>HT</div>'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="projects-header">
+            <h2>Projects</h2>
+        </div>
+        <div class="projects-showcase">
+            <div class="project-card fade-in">
+                <h3>SILENT: Sign Language Translator</h3>
+                <p>Real-time sign language translator supporting BISINDO and SIBI with 91%+ F1-score. Built dual ML models using TensorFlow and scikit-learn with MediaPipe for gesture detection. Deployed full-stack web application using React.js frontend and Flask backend with Docker containerization.</p>
+                <a href="https://silent-sign.vercel.app/" target="_blank" class="project-link">View Project</a>
+            </div>
+            
+            <div class="project-card fade-in">
+                <h3>Urban Mobility Analytics</h3>
+                <p>Comprehensive data analysis on bike-sharing dataset to identify usage patterns and customer behavior insights. Built interactive Streamlit dashboard for data visualization and business intelligence reporting.</p>
+                <a href="https://github.com/hannatashyaa/Analysis-Data-Bike-sharing.git" target="_blank" class="project-link">View GitHub</a>
+            </div>
+            
+            <div class="project-card fade-in">
+                <h3>Predictive Analytics for Business Intelligence</h3>
+                <p>Developed end-to-end machine learning pipeline following CRISP-DM methodology for predictive modeling. Implemented and compared multiple ML algorithms with comprehensive evaluation and business recommendations.</p>
+                <a href="https://github.com/hannatashyaa/Proyek-Predictive-Analytics.git" target="_blank" class="project-link">View GitHub</a>
+            </div>
+            
+            <div class="project-card fade-in">
+                <h3>Intelligent Recommendation Engine</h3>
+                <p>Built hybrid recommendation system combining content-based filtering and collaborative filtering approaches. Implemented TF-IDF vectorization and similarity algorithms for personalized content recommendations.</p>
+                <a href="https://github.com/hannatashyaa/Proyek-Sistem-Rekomendasi.git" target="_blank" class="project-link">View GitHub</a>
+            </div>
+            
+            <div class="project-card fade-in">
+                <h3>Customer Segmentation & Classification</h3>
+                <p>Developed machine learning workflow combining K-means clustering and classification algorithms on retail dataset. Applied feature engineering, data preprocessing, and model evaluation to achieve 92%+ classification accuracy.</p>
+                <a href="https://github.com/hannatashyaa/Membangun-Proyek-Machine-Learning.git" target="_blank" class="project-link">View GitHub</a>
+            </div>
+            
+            <div class="project-card fade-in">
+                <h3>Computer Vision CNN for Scene Classification</h3>
+                <p>Built convolutional neural network for multi-class image classification on 10,000+ natural scene images. Implemented data augmentation, model optimization, and deployed models in multiple formats (SavedModel, TF-Lite, TFJS).</p>
+                <a href="https://github.com/hannatashyaa/Proyek-Klasifikasi-Gambar.git" target="_blank" class="project-link">View GitHub</a>
+            </div>
+            
+            <div class="project-card fade-in">
+                <h3>Automated ETL Pipeline</h3>
+                <p>Designed modular ETL pipeline with Extract, Transform, Load processes and comprehensive unit testing. Applied software engineering best practices including modular code architecture and data validation.</p>
+                <a href="https://github.com/hannatashyaa/Membangun-ETL-Pipeline-Sederhana.git" target="_blank" class="project-link">View GitHub</a>
+            </div>
+            
+            <div class="project-card fade-in">
+                <h3>Festin Unique All-You-Can-Eat POS</h3>
+                <p>Complete restaurant management system with integrated POS and analytics capabilities, featuring customer behavior analysis and revenue optimization tools. Includes order management, customer analytics, revenue tracking, and inventory control.</p>
+                <a href="https://festin-unique.vercel.app/" target="_blank" class="project-link">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="projects-header">
+            <h2></h2>
+        </div>
+        <div class="about-header">
+            <div class="about-intro fade-in">
+                <h2>Hello, I am <span class="highlight-name">Hanna Tashya</span></h2>
+                <p>I'm an Information Systems student at Universitas Atma Jaya Yogyakarta, specializing in Machine Learning and Data Science.</p>
+                <p>I'm passionate about machine learning and AI, and I enjoy solving problems with data-driven solutions. Eager to learn and grow, I thrive in every step of the development process, from brainstorming fresh ideas to delivering impactful and engaging solutions.</p>
+                <p>Feel free to check out my portfolio. If you're interested in collaborating with me or have any inquiries, I would be delighted to hear from you. Your visit to my portfolio is greatly appreciated!</p>
+            </div>
+            
+            <div class="about-photo fade-in">
+                <img src="image/hanna.about.jpg" alt="Hanna Tashya Portuna" onerror="this.style.display='none';">
+            </div>
+        </div>
+
+        <div class="about-details">
+            <div class="education-section fade-in">
+                <h3>Education</h3>
+                <div class="education-item">
+                    <h4>Universitas Atma Jaya Yogyakarta</h4>
+                    <p class="degree">Bachelor of Information Systems</p>
+                    <p class="duration">2022 - Present</p>
+                </div>
+                <div class="education-item">
+                    <h4>Coding Camp DBS Foundation</h4>
+                    <p class="degree">Machine Learning Cohort</p>
+                    <p class="specialization">Intensive 6-month Program</p>
+                    <p class="duration">February 2025 - July 2025</p>
+                </div>
+            </div>
+
+            <div class="languages-section fade-in">
+                <h3>Languages</h3>
+                <div class="language-item">
+                    <span class="language-name">Indonesian</span>
+                    <!-- <span class="language-level">Native</span> -->
+                </div>
+                <div class="language-item">
+                    <span class="language-name">English</span>
+                    <!-- <span class="language-level">Professional</span> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="expertise-section">
+        <div class="expertise-header fade-in">
+            <h2>Technical Expertise</h2>
+            <p>Tools and technologies I use to bring ideas to life</p>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-card fade-in">
+                <div class="tool-icon">
+                    <img src="image/logo.canva.jpg" alt="Canva" onerror="this.parentElement.innerHTML='<div class=\'tool-icon-placeholder canva-icon\'>C</div>'">
+                </div>
+                <div class="tool-info">
+                    <h4>Canva</h4>
+                </div>
+            </div>
+
+            <div class="tool-card fade-in">
+                <div class="tool-icon">
+                    <img src="image/logo.figma.png" alt="Figma" onerror="this.parentElement.innerHTML='<div class=\'tool-icon-placeholder figma-icon\'>F</div>'">
+                </div>
+                <div class="tool-info">
+                    <h4>Figma</h4>
+                </div>
+            </div>
+
+            <div class="tool-card fade-in">
+                <div class="tool-icon">
+                    <img src="image/vscode.logo.png" alt="VS Code" onerror="this.parentElement.innerHTML='<div class=\'tool-icon-placeholder vscode-icon\'>VS</div>'">
+                </div>
+                <div class="tool-info">
+                    <h4>VS Code</h4>
+                </div>
+            </div>
+
+            <div class="tool-card fade-in">
+                <div class="tool-icon">
+                    <img src="image/gc.logo.png" alt="Google Colab" onerror="this.parentElement.innerHTML='<div class=\'tool-icon-placeholder gc-icon\'>GC</div>'">
+                </div>
+                <div class="tool-info">
+                    <h4>Google Colab</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-header fade-in">
+            <h2>Let's Connect</h2>
+            <p>Ready to collaborate? I'd love to hear from you!</p>
+        </div>
+        
+        <div class="contact-methods">
+            <a href="mailto:hannatashya9@gmail.com" class="contact-method fade-in">
+                <div class="method-icon">✉️</div>
+                <div class="method-info">
+                    <h4>Email</h4>
+                    <p>hannatashya9@gmail.com</p>
+                </div>
+            </a>
+            
+                        <a href="https://www.linkedin.com/in/hannatashyaportuna" target="_blank" class="contact-method fade-in">
+                <div class="method-icon linkedin-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" style="width: 24px; height: 24px; object-fit: contain;">
+                </div>
+                <div class="method-info">
+                    <h4>LinkedIn</h4>
+                    <p>Hanna Tashya Portuna</p>
+                </div>
+            </a>
+            
+            <a href="https://github.com/hannatashyaa" target="_blank" class="contact-method fade-in">
+                <div class="method-icon github-icon">
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; height: 24px; object-fit: contain;">
+                </div>
+                <div class="method-info">
+                    <h4>GitHub</h4>
+                    <p>@hannatashyaa</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active navigation link
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click effects to tool icons
+        document.querySelectorAll('.tool-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.style.transform = 'scale(1.2) rotate(360deg)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                }, 500);
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.hero-content');
+            const profileContainer = document.querySelector('.profile-container');
+            
+            if (heroContent && profileContainer) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+                profileContainer.style.transform = `translateY(${scrolled * 0.2}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
